@@ -5,11 +5,11 @@ import { useState } from "react";
 import Register from "./components/Register";
 import Protected from "./components/Protected";
 import CreatePost from "./components/CreatePost";
-import Loader from "./components/Loader";
-import EditPost from "./components/EditPost";
+// import Loader from "./components/Loader";
+// import EditPost from "./components/EditPost";
 import BlogDetail from "./pages/BlogDetail";
-import Navbar from "./components/Navbar";
-import Test from "./components/Test";
+// import Navbar from "./components/Navbar";
+// import Test from "./components/Test";
 import Landing  from "./components/Landing";
 import Myposts from "./components/Myposts";
 

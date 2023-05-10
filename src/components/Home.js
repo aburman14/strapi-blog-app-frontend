@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import {  useNavigate,Link, Outlet  } from 'react-router-dom'
+import {  useNavigate, Outlet  } from 'react-router-dom'
 import Loader from './Loader'
-import Input from './Input'
+// import Input from './Input'
 import { useDebouce } from '../hooks/useDebouce'
-import avatar_male from '../assets/avatar_male.svg'
+// import avatar_male from '../assets/avatar_male.svg'
 import Navbar from './Navbar';
-import Landing from './Landing'
+// import Landing from './Landing'
 
-import { PencilSquareIcon,ArrowTrendingUpIcon,ArrowLeftOnRectangleIcon,Squares2X2Icon,FaceSmileIcon } from '@heroicons/react/24/solid'
+// import { PencilSquareIcon,ArrowTrendingUpIcon,ArrowLeftOnRectangleIcon,Squares2X2Icon,FaceSmileIcon } from '@heroicons/react/24/solid'
 
 // import BlogDetail from '../pages/BlogDetail';
 
@@ -15,7 +15,7 @@ const Home = ({loading,setisedit}) => {
   const Navigate=useNavigate()
 
  const[allposts,setallposts]=useState([])
-
+ 
  //input search state variable
  const [search,setsearch]=useState('') 
  
@@ -23,7 +23,7 @@ const Home = ({loading,setisedit}) => {
  const debounced_val=useDebouce(search,1000)
  
  
- const server_name='http://localhost:1337'
+//  const server_name='http://localhost:1337'
   const getposts=()=>{
     const requestOptions = {
       method: "GET",
@@ -39,14 +39,14 @@ const Home = ({loading,setisedit}) => {
       .catch((err) => console.log('error'));
   }
 
-  const user_logout=()=>{
-    localStorage.clear()
-    Navigate('/')
-  }
+  // const user_logout=()=>{
+  //   localStorage.clear()
+  //   Navigate('/')
+  // }
 
-  const modalopen=()=>{
-    Navigate('/createpost')
-  }
+  // const modalopen=()=>{
+  //   Navigate('/createpost')
+  // }
 
   useEffect(() => {
 

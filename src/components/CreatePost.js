@@ -45,7 +45,6 @@ function CreatePost() {
       console.log(event.target.files[0])
      setfile(event.target.files[0])
     }
-
     const image_submit=()=>{
       const formData=new FormData()
       formData.append('files',file)

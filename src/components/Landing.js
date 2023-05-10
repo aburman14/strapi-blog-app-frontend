@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {  useNavigate,Link  } from 'react-router-dom'
+import {  Link  } from 'react-router-dom'
 import Loader from './Loader'
 import Input from './Input'
 import { useDebouce } from '../hooks/useDebouce'
@@ -8,7 +8,7 @@ import avatar_male from '../assets/avatar_male.svg'
 const Landing = ({loading,setisedit}) => {
 
 
-    const Navigate=useNavigate()
+    // const Navigate=useNavigate()
 
     const[allposts,setallposts]=useState([])
    
@@ -19,7 +19,7 @@ const Landing = ({loading,setisedit}) => {
     const debounced_val=useDebouce(search,1000)
     
     
-    const server_name='http://localhost:1337'
+    // const server_name='http://localhost:1337'
      const getposts=()=>{
        const requestOptions = {
          method: "GET",
@@ -35,14 +35,14 @@ const Landing = ({loading,setisedit}) => {
          .catch((err) => console.log('error'));
      }
    
-     const user_logout=()=>{
-       localStorage.clear()
-       Navigate('/')
-     }
+    //  const user_logout=()=>{
+    //    localStorage.clear()
+    //    Navigate('/')
+    //  }
    
-     const modalopen=()=>{
-       Navigate('/home/createpost')
-     }
+    //  const modalopen=()=>{
+    //    Navigate('/home/createpost')
+    //  }
    
      useEffect(() => {
    
@@ -51,18 +51,19 @@ const Landing = ({loading,setisedit}) => {
      }, [])
    
    
-     useEffect(()=>{
+    //  useEffect(()=>{
    
-       // console.log(search)
-       console.log(search)
+    //    // console.log(search)
+    //    console.log(search)
    
-     },[debounced_val])
+    //  },[debounced_val])
    
-   const edit=(id)=>{
-     console.log(id)
-     setisedit(true)
-     // modalopen()
-     Navigate(`/${id}`)
+  //  const edit=(id)=>{
+  //    console.log(id)
+  //    setisedit(true)
+  //    // modalopen()
+  //    Navigate(`/${id}`)
+  //  }
    
    //   let token=JSON.parse(localStorage.getItem('creds')).jwt
    //   let user_id=JSON.parse(localStorage.getItem('creds')).user.id
@@ -95,7 +96,7 @@ const Landing = ({loading,setisedit}) => {
    //     console.error('Error:', error);
    //   });
    
-   }
+   
    if(loading){
     return (
       <Loader />
@@ -109,9 +110,9 @@ const Landing = ({loading,setisedit}) => {
     <p className='text-3xl capitalize p-3 font-bold text-white bg-gray-800 rounded w-[60%]	'>Article of the day</p>
     <main  className='my-2 mx-10  w-[50%] shadow-md  bg-white rounded-xl border-1 border-t-2 border-slate-200	 '>
                 {/* <img  alt="test" className=' bg-white rounded-md object-cover my-2 h-56 shadow-2xl shadow-gray-300' /> */}
-                <h1 class=" p-4 font-bold text-3xl text-orange-700 top-[223px] left-[305px]  capitalize pr-4 pl-[2rem]">Lorem ipsum dolor sit</h1>
-                <p class=" text-cyan-700 text-s  pl-[1rem] pt-[1rem]">It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing .</p>
-                <button class=" my-10 mx-10 bg-orange-700 text-white	rounded-full p-2 text-sm font-bold">Read More</button>
+                <h1 className=" p-4 font-bold text-3xl text-orange-700 top-[223px] left-[305px]  capitalize pr-4 pl-[2rem]">Lorem ipsum dolor sit</h1>
+                <p className=" text-cyan-700 text-s  pl-[1rem] pt-[1rem]">It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing .</p>
+                <button className=" my-10 mx-10 bg-orange-700 text-white	rounded-full p-2 text-sm font-bold">Read More</button>
             </main>
     <h1 className='text-2xl font-bold capitalize p-3'>Top Match For you</h1>
     < div className='flex flex-column flex-wrap items-baseline gap-x-5'>
@@ -119,17 +120,17 @@ const Landing = ({loading,setisedit}) => {
       allposts.map((post,id)=>{
         let img_url=post.attributes?.image?.data?.attributes?.url || ''
         let posted_by=post.attributes.users_permissions_user.data.attributes.username
-        let logged_in=JSON.parse(localStorage.getItem('creds')).user.username        
+        // let logged_in=JSON.parse(localStorage.getItem('creds')).user.username        
           return (
             <main key={post.id} className='my-4 ml-10  border-t-4 border-cyan-500 shadow-md h-[394px] w-[25rem] cursor-pointer bg-white p-4 pb-4 rounded-md'>
-              <img src={img_url} alt="test" className='rounded-md object-cover my-2 h-48  w-96' />
+              <img src={img_url} alt="test" className='rounded-md object-cover my-2 h-48  w-96'  />
               
               <div >
                 <h3 className='text-2xl font-bold capitalize my-2 text-orange-800'>{post.attributes.title.substring(0,30)}</h3>
                 {/* <p className="capitalize" dangerouslySetInnerHTML={{__html: post.attributes.blog_detail}}></p> */}
                 <p className='h-[90px]'>{post.attributes.blog_detail.replace( /(<([^>]+)>)/ig, '').substring(0,100)}</p>
                 <div className='flex flex-row gap-x-2'>
-                  <img src={avatar_male} className='h-[30px] self-center' />
+                  <img src={avatar_male} className='h-[30px] self-center'  alt=""/>
                   <p >by<span className='capitalize font-bold pl-2'>{posted_by}</span> </p>
                   <p>{post.attributes.post_created}</p>
                   <Link to={`/home/posts/${post.id}`}>Read More...</Link>
@@ -151,7 +152,7 @@ const Landing = ({loading,setisedit}) => {
     </div>
     </div>
     <div className='flex flex-row place-items-baseline py-4'>
-    <img src={avatar_male} className='h-[60px] pl-[10px] 	' />
+    <img src={avatar_male} className='h-[60px] pl-[10px] 	' alt="" />
     <p className='capitalize  translate-y-[-16px] font-bold pl-[8px]	'>{JSON.parse(localStorage.getItem('creds')).user.username}</p>
     </div>
     </div>
